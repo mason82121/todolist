@@ -1,0 +1,44 @@
+body {
+    background-image: url(../joel.jpg);
+    background-position: center center;
+    background-size: cover;
+    height: 100vh;
+    font-family: Microsoft JhengHei;
+    font-weight: bold;
+}
+
+.main {
+    max-width: 600px;
+    background-color: #fffafa;
+    border-radius: 10px;
+    -webkit-box-shadow: 1px 1px 5px 1px #ffffcd;
+    box-shadow: 1px 1px 5px 1px #ffffcd;
+}
+
+.main .title {
+    color: #e3cf57;
+}
+
+.main .menu .custom-btn {
+    height: 16px;
+    width: 16px;
+    border-radius: 10px;
+    border: 0px;
+    background-color: #e3cf57;
+}
+
+.main .content .finish {
+    background-color: #ffffcd;
+}
+
+.deleteItem,
+.deleteItem:hover {
+    color: #2d2a2a;
+    text-decoration: none;
+}
+
+input:focus,
+form-control:focus {
+    outline: none;
+    outline-color: white；
+}

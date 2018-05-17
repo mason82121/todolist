@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/all.css">
+    <title>ToDoList</title>
+</head>
+
+<body>
+    <div class="container mt-5 pb-4 main" id="toDoList">
+        <h1 class="title pt-3 display-4">ToDoList</h1>
+        <div class="input-group mb-3 ">
+            <input type="text" class="form-control" placeholder="輸入待辦事項" aria-label="輸入待辦事項" aria-describedby="basic-addon2" @keyup.enter="addToDo(newToDo)" v-model="newToDo">
+            <div class="input-group-append">
+                <button class="btn btn-secondary" type="button" @click="addToDo(newToDo)">送出</button>
+            </div>
+        </div>
+        <div class="menu px-2">
+            <div class="row">
+                <div class="col-sm-5 py-1 mr-auto">
+                    <div>
+                        <button class="custom-btn" type="button" @click="allFinished" id="allClick"></button>
+                        <label for="allClick">全部完成</label>
+
+                    </div>
+                </div>
+                <div class="col-sm-7 py-1">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="allDisplay" name="customRadioInline1" class="custom-control-input" value="0" v-model="showCondition">
+                        <label class="custom-control-label" for="allDisplay">全部顯示</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="done" name="customRadioInline1" class="custom-control-input" value="1" v-model="showCondition">
+                        <label class="custom-control-label" for="done">已完成</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="undone" name="customRadioInline1" class="custom-control-input" value="2" v-model="showCondition">
+                        <label class="custom-control-label" for="undone">未完成</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content mt-3">
+            <ul class="list-group">
+                <li class="list-group-item" v-for="item in toDos" :class="{finish: item.finish}" v-if="showCondition==0 || (showCondition==1 && item.finish==true) ||(showCondition==2 && item.finish==false)">
+                    <div class="d-flex align-items-center ">
+                        <input type="checkbox" v-model="item.finish" @click="newCondition">
+                        <p class="my-0 ml-3 mr-auto">{{item.content}}</p>
+                        <a class="deleteItem" href="#" @click.prevent="removeToDo(item)">刪除</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="js/all.js"></script>
+</body>
+
+</html>
